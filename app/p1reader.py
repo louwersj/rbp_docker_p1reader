@@ -1,10 +1,51 @@
-#
-# ESMR 5.0 P1 uitlezer
-# (c) 10-2012 - GJ - gratis te kopieren en te plakken
-# (c) 12-2015 / 2016 - GJ Database versie
-# (c) 11-2017 EMSR 5.0
 
-versie = "0.1"
+'''
+ NAME:
+  p1reader.py
+
+  DESC:
+  Code is intended to read smart-meter P1 datagram based data and publish the individual data
+  using MQTT. Intended use is to "feed" Home Assistant with MQTT based data-points retrieved
+  from the smart-meter.
+  
+  Documentation on P1 standards can be located at the following location;
+  https://github.com/louwersj/rbp_docker_p1reader/blob/master/docs/P1_Companion_Standard%20.pdf
+
+  Based upon the original work done by GJ adn forked by JL (Johan Louwers).
+
+  LOG:
+  VERSION---DATE--------NAME-------------COMMENT
+  0.1       10-2012     GJ               gratis te kopieren en te plakken
+  0.2       12-2016     GJ               Database versie
+  0.3       11-2017     GJ               EMSR 5.0
+  0.4       06-2021     JL               forked from GJ, removed DB version and implemented MQTT
+  0.5       06-2021     JL               Full code refactor and prepared it for Docker
+
+  LICENSE:
+  Copyright (C) 2014  Johan Louwers
+
+  This code is free software; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License
+  as published by the Free Software Foundation; either version 2
+  of the License, or (at your option) any later version.
+
+  This code is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this code; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+'''
+
+__author__ = "Johan Louwers"
+__copyright__ = "Copyright 2020, Johan Louwers"
+__license__ = "GNU GPL v2"
+__email__ = "louwersj@gmail.com"
+
+versie = "0.5"
 import sys
 import serial
 import time
