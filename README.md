@@ -22,6 +22,7 @@ Some information for when you try to debug things
 For reading MQTT manually you can use the below mosquitto (mosquitto_sub) command. This will read all information published under smartmeter (and deeper)
 
 Example command:
+
 `mosquitto_sub -h 10.10.1.242 -p 1883 -d -t smartmeter/#`
 
 Example output:
@@ -47,4 +48,5 @@ Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/ene
 Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/energy/production/current/tarrif2', ... (1 bytes))
 0
 Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/energy/flow/current', ... (2 bytes))
-57```
+57
+```
