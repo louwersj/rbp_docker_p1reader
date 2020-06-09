@@ -23,7 +23,7 @@ For reading MQTT manually you can use the below mosquitto (mosquitto_sub) comman
 
 mosquitto_sub -h 10.10.1.242 -p 1883 -d -t smartmeter/#
 
-Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/energy/consumption/total/tarrif1', ... (4 bytes))
+```Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/energy/consumption/total/tarrif1', ... (4 bytes))
 3741
 Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/energy/consumption/total/tarrif2', ... (4 bytes))
 4535
@@ -44,4 +44,4 @@ Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/ene
 Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/energy/production/current/tarrif2', ... (1 bytes))
 0
 Client mosqsub|7970-rbp0.inter received PUBLISH (d0, q0, r0, m0, 'smartmeter/energy/flow/current', ... (2 bytes))
-57
+57```
