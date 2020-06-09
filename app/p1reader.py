@@ -80,6 +80,8 @@ def p1Communicator():
     electricityConsumed = 0   # consumed electricity (current)
     electricityProduced = 0   # produced electricity (current)
     electricityFlow=0         # current electricity flow (negative numbers is production)
+    electricityFlowTarrif1=0         # current electricity flow tarrif 1(negative numbers is production)
+    electricityFlowTarrif2=0         # current electricity flow tarrif 1(negative numbers is production)
 
 
 
@@ -131,7 +133,6 @@ def p1Communicator():
         elif datagram[datagramLine][0:9] == "1-0:2.7.0":
             electricityProduced = int(float(datagram[datagramLine][10:16])*1000)
             printTerminalLog("current produced electricity Watt", electricityProduced)
-            electricityFlow = electricityConsumed - electricityProduced
         elif datagram[datagramLine][0:9] == "0-0:96.14":
             currentTariff = int(datagram[datagramLine][12:16])
             printTerminalLog("current tariff", currentTariff)
@@ -162,6 +163,9 @@ def p1Communicator():
         producedTariff1Current = 0
         producedTariff2Current = 0
 
+    electricityFlowTarrif1 = consumedTariff1Current - producedTariff1Current
+    electricityFlowTarrif2 = consumedTariff2Current - producedTariff2Current
+    electricityFlow = electricityConsumed - electricityProduced
 
 # publish towards MQTT all total energy consumption data
     publish.single("smartmeter/energy/consumption/total/tarrif1", consumedTariff1, hostname=mqttBroker, port=mqttPort)
@@ -183,6 +187,8 @@ def p1Communicator():
 
 # publish towards MQTT all current energy flow data
     publish.single("smartmeter/energy/flow/current", electricityFlow, hostname=mqttBroker, port=mqttPort)
+    publish.single("smartmeter/energy/flow/tarrif1", electricityFlowTarrif1, hostname=mqttBroker, port=mqttPort)
+    publish.single("smartmeter/energy/flow/tarrif2", electricityFlowTarrif2, hostname=mqttBroker, port=mqttPort)
 
 # publish towards MQTT all gas consumption data. We only do this when value is not 0 because we do not always have a P1
 # value for gas total and we do not want to populate the data warehouse with 0 (missed readings) values.
@@ -201,7 +207,7 @@ print ("ESMR 5.0 P1 uitlezer",  versie)
 print ("Gemiddelde telegram uitlezen duurt 10 seconden")
 print ("Control-C om te stoppen")
 
-sleeptimer = 61
+sleeptimer = 2
 while True:
     time.sleep(sleeptimer)
     p1Communicator()
