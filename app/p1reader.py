@@ -207,7 +207,7 @@ print ("ESMR 5.0 P1 uitlezer",  versie)
 print ("Gemiddelde telegram uitlezen duurt 10 seconden")
 print ("Control-C om te stoppen")
 
-sleeptimer = 2
+sleeptimer = 61
 while True:
     time.sleep(sleeptimer)
     p1Communicator()
